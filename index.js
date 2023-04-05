@@ -9,5 +9,3 @@ app.use(express.static('.'));
 app.listen(4000, () => {
     console.log('Server has been started on 4000...');
 });
-
-
