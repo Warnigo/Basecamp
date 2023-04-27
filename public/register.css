@@ -147,5 +147,12 @@ a {
 }
 
 h4 {
-       color: #000000;
+       color: rgb(240, 67, 67);
+       box-sizing: border-box;
+       text-align: center;
+       /* width: 300px; */
+       height: 40px;
+       padding-top: 7px;
+       background-color: #9e8af8;
+       border: 1px solid rgb(240, 67, 67);
 }
