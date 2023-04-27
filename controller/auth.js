@@ -21,6 +21,10 @@ exports.register= (req, res) => {
       return res.render('register', {
         mesesage: "That email is already in use!"
       })
+    }else if (name === "") {
+      return res.render('register', {
+        mesesage: "Please enter your name!"
+      })
     }else if (password !== password_c) {
       return res.render('register', {
         mesesage: "Passwords do not match!"
@@ -40,4 +44,28 @@ exports.register= (req, res) => {
     });
     res.send('Hello World!');
   });
-}; 
+};
+
+// exports.login = (req, res) => {
+//   const {email, password} = req.body;
+//   db.query(`SELECT * FROM users WHERE email =?`, [email], async (err, results) => {
+//     if(err) {
+//       console.log(err);
+//     }
+//     if (results.length === 0) {
+//       return res.render('login', {
+//         mesesage: "That email is not registered!"
+//       })
+//     }else if (!await bcrypt.compare(password, results[0].password)) {
+//       return res.render('login', {
+//         mesesage: "Wrong password!"
+//       })
+//     }
+//     const token = jwt.sign({email: results[0].email}, process.env.SECRET, {expiresIn: '1h'});
+//     return res.render('login', {
+//       mesesage: "Successfully logged in!",
+//       // token: token
+//     })
+//   });
+// }
+
