@@ -1,6 +1,8 @@
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');  
 const bcrypt = require('bcrypt');
+const express = require('express');
+const app = express();
 
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -42,30 +44,31 @@ exports.register= (req, res) => {
         });
       };
     });
-    res.send('Hello World!');
+    res.redirect('/profile');
   });
 };
 
+
 // exports.login = (req, res) => {
-//   const {email, password} = req.body;
-//   db.query(`SELECT * FROM users WHERE email =?`, [email], async (err, results) => {
-//     if(err) {
+//   const { email, password } = req.body;
+//   db.query(`SELECT * FROM users WHERE email = ?`, [email], async (err, results) => {
+//     if (err) {
 //       console.log(err);
 //     }
 //     if (results.length === 0) {
 //       return res.render('login', {
-//         mesesage: "That email is not registered!"
-//       })
-//     }else if (!await bcrypt.compare(password, results[0].password)) {
+//         message: "That email is not registered!"
+//       });
+//     } else if (!await bcrypt.compare(password, results[0].password)) {
 //       return res.render('login', {
-//         mesesage: "Wrong password!"
-//       })
+//         message: "Wrong password!"
+//       });
 //     }
-//     const token = jwt.sign({email: results[0].email}, process.env.SECRET, {expiresIn: '1h'});
+//     const token = jwt.sign({ email: results[0].email }, process.env.DATABASE_PASSWORD, { expiresIn: '1h' });
 //     return res.render('login', {
-//       mesesage: "Successfully logged in!",
-//       // token: token
-//     })
+//       message: "Successfully logged in!",
+//       token: token
+//     });
 //   });
-// }
-
+// };
+ 
